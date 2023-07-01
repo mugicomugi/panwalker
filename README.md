@@ -1,5 +1,7 @@
 # PanWalker
 
+実装機能リスト：https://docs.google.com/spreadsheets/d/1patB2YXBCeQrKScTu3pX0ZEvy0YwajUtrhyiDPwQEE0/edit?usp=sharing
+
 ## サイト概要
 ### サイトテーマ
 散策しながら好きなものを食べ、報告しあうコミュニティサイト
