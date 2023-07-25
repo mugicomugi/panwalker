@@ -1,0 +1,24 @@
+<h1>User#show</h1>
+<p>Find me in app/views/user/show.html.erb</p>
+
+<div>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <% if @user == current_user %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+</div>
+
+<!-- ユーザーの投稿一覧 -->
+
+<% @pan_images.each do |post_image| %>
+<div>
+  <%= link_to pan_image_path(pan_image.id) do %>
+    <%= image_tag pan_image.get_image %>
+  <% end %>
+  <p>投稿ユーザー画像：<%= image_tag pan_image.user.get_profile_image(100,100) %></p>
+  <p>ショップ名：<%= pan_image.shop_name %></p>
+  <p>説明：<%= pan_image.caption %></p>
+  <p>ユーザーネーム：<%= pan_image.user.name %></p>
+</div>
+<% end %>
