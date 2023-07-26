@@ -1,23 +1,23 @@
 Rails.application.routes.draw do
   
-    scope module: :public do
-    get '/about' => "homes#about"
-    root to: "homes#top"
-    resources :lists, only: [:new, :index, :show, :edit]
-    resources :pan_images, only: [:new, :index, :show, :delete]
-    resources :user, only: [:show, :edit, :update]
-    end
-       devise_for :user, skip: [:passwords], controllers: {
-          #model
-           registrations: "public/registrations",
-           sessions: 'public/sessions'
-           #fileの指定
-          }
+    devise_for :users, skip: [:passwords], controllers: {
+      #model
+       registrations: "public/registrations",
+       sessions: 'public/sessions'
+       #fileの指定
+    }
        
-     
-       devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-           sessions: "admin/sessions"
-          }
+    scope module: :public do
+        root to: "homes#top"
+        get '/about' => "homes#about"
+        resources :lists, only: [:new, :index, :show, :edit]
+        resources :pan_images, only: [:new, :index, :show, :delete]
+        resources :users, only: [:show, :edit, :update]
+    end
+    
+    devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+       sessions: "admin/sessions"
+    }
         #   get 'lists/new'
         #   get 'lists/index'
         #   get 'lists/show'
