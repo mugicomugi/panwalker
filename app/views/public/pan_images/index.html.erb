@@ -10,5 +10,6 @@
     <p>ショップ名：<%= pan_image.shop_name %></p>
     <p>説明：<%= pan_image.caption %></p>
     <p>ユーザーネーム：<%= pan_image.user.name %></p>
+     <p><%= link_to "#{pan_image.pan_comments.count} コメント", pan_image_path(pan_image.id) %></p>
   </div>
 <% end %>

@@ -11,7 +11,7 @@
 
 <!-- ユーザーの投稿一覧 -->
 
-<% @pan_images.each do |post_image| %>
+<% @pan_images.each do |pan_image| %>
 <div>
   <%= link_to pan_image_path(pan_image.id) do %>
     <%= image_tag pan_image.get_image %>

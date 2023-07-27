@@ -1,0 +1,2 @@
+module Public::PanCommentsHelper
+end
