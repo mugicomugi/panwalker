@@ -22,13 +22,13 @@ class Public::PanImagesController < ApplicationController
     @pan_comment = PanComment.new
   end
 
-  def delete
+  def destroy
     @pan_image = PanImage.find(params[:id])
-    @pan_image.delete
+    @pan_image.destroy
     redirect_to pan_images_path
   end
   
-   private
+  private
 
   def pan_image_params
     params.require(:pan_image).permit(:shop_name, :image, :caption)

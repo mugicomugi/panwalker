@@ -10,6 +10,20 @@
   <% if @pan_image.user == current_user %>
     <%= link_to "削除", pan_image_path(@pan_image), method: :delete %>
   <% end %>
+  
+  <% if @pan_image.favorited_by?(current_user) %>
+  <p>
+    <%= link_to pan_image_favorites_path(@pan_image), method: :delete do %>
+    ♥<%= @pan_image.favorites.count %> @いいね
+    <% end %>
+  </p>
+  <% else %>
+  <p>
+    <%= link_to pan_image_favorites_path(@pan_image), method: :post do %>
+     ♥<%= @pan_image.favorites.count %> @いいね
+    <% end %>
+  </p>
+  <% end %>
 </div>
 
 <div>
@@ -19,7 +33,8 @@
     <%= pan_comment.user.name %>
     <%= pan_comment.created_at.strftime('%Y/%m/%d') %><%= pan_comment.comment %>
     <% if pan_comment.user == current_user %>
-      <%= link_to "削除", pan_image_pan_comments_path(pan_comment.pan_image, pan_comment), method: :delete %>
+      <%= link_to "削除", pan_image_pan_comment_path(pan_image_id: pan_comment.pan_image_id, id: pan_comment.id), method: :delete %>
+      
     <% end %>
   <% end %>
 </div>

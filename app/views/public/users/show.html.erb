@@ -20,5 +20,8 @@
   <p>ショップ名：<%= pan_image.shop_name %></p>
   <p>説明：<%= pan_image.caption %></p>
   <p>ユーザーネーム：<%= pan_image.user.name %></p>
+  <% if pan_image.user == current_user %>
+    <%= link_to "削除", pan_image_path(pan_image), method: :delete %>
+  <% end %>
 </div>
 <% end %>
