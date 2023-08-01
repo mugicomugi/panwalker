@@ -1,0 +1,48 @@
+/* top.scss */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  width: 90%; /* 横幅90% */
+  padding: 15px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    display: inline-block;
+    width: 400px;
+    height: 300px;
+    background-color: lightgray;
+    background-image: url(pan1.webp);
+    background-size: cover; 
+    background-position: center;
+}
+
+.image_pan1 {
+    width: 300;
+    height: 300;
+    background-color: darkgray;
+}
+
+.image_pan2 {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  /* 指定方法（box2の周囲すべてに枠線を設定する場合） */
+  border: 5px solid yellow;
+}
+
+h1 {
+    color: blue;
+}
