@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
        sessions: "admin/sessions"
     }
+    namespace :admin do
+        get '/top' => "homes#top"
+    end
         #   get 'lists/new'
         #   get 'lists/index'
         #   get 'lists/show'

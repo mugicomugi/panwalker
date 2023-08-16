@@ -25,29 +25,39 @@
         <div class="container">
           <ul class="navbar-nav ml-auto">
             <li>
-            <%= link_to "管理者ページ", new_admin_session_path, class: 'btn btn-default' %>
+            <%= link_to "管理者ページ", new_admin_session_path, class: 'btn btn-outline-secondary' %>
             </li>
             <% if admin_signed_in? %>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-default' %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary' %>
             <br>
             <% elsif user_signed_in? %>
-            <li>
-              <%= link_to '投稿フォーム', new_pan_image_path %>
+            <div class="row">
+            <br>
+            <div class="col">
+          <div class="collapse navbar-collapse" id="navbarNav">
+           <ul class="navbar-nav">
+            <li class="nav-item">
+                <%= link_to '投稿フォーム', new_pan_image_path, class: 'btn btn-outline-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'マイページ', user_path(current_user.id), class: 'btn btn-outline-dark' %>
+              </li>
+              <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark' %>
+              </li>
             </li>
-            <li>
-              <%= link_to 'マイページ', user_path(current_user.id) %>
-            </li>
-            <li>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            </li>
+            </ul>
+            </div>
           <% else %>
-            <li>
-              <%= link_to "新規登録", new_user_registration_path %>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-dark' %>
             </li>
-            <li>
-              <%= link_to "ログイン", new_user_session_path %>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-dark' %>
             </li>
           <% end %>
+            </div>
+            </div>
         </header>
     <%= yield %>
   </body>
