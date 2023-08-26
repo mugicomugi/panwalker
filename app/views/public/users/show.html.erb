@@ -1,27 +1,51 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
-
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+   <div class="col-md-3">
+    <h1>User#show</h1>
+    <div class="col-md-8 offset-md-1">
+  
+  <h2>Books</h2>
+  <table class="table table-hover table-inverse">
+ <%= link_to '投稿フォーム', new_pan_image_path, class: 'btn btn-outline-dark' %>
+              </li>
+<thead>
+<tr>
+  <th></th>
+  <th>Title</th>
+  <th>Opinion</th>
+  <th colspan="3"></th>
+</tr>
+</thead>
+<tbody>
+    <tr>
+      <td>
+      <h3><%= @user.name %></h3>
+      <%= image_tag @user.get_profile_image(100,100) %>
+      <% if @user == current_user %>
+        <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+      <% end %>
+      </td>
+    </tr>
+    <!-- ユーザーの投稿一覧 -->
+    <% @pan_images.each do |pan_image| %>
+    <tr>
+        <td>投稿ユーザー画像：<%= image_tag pan_image.user.get_profile_image(100,100) %></td>
+      <td>
+        <%= link_to pan_image_path(pan_image.id) do %>
+          <%= image_tag pan_image.get_image %>
+        <% end %>
+      </td>
+        <td>ショップ名：<%= pan_image.shop_name %></td>
+        <br>
+        <td>説明：<%= pan_image.caption %></td>
+        <br>
+        <td>ユーザーネーム：<%= pan_image.user.name %></td>
+        <br>
+        <% if pan_image.user == current_user %>
+          <%= link_to "削除", pan_image_path(pan_image), method: :delete %>
+        <% end %>
+      </tr>
+    <% end %>
 </div>
-
-<!-- ユーザーの投稿一覧 -->
-
-<% @pan_images.each do |pan_image| %>
-<div>
-  <%= link_to pan_image_path(pan_image.id) do %>
-    <%= image_tag pan_image.get_image %>
-  <% end %>
-  <p>投稿ユーザー画像：<%= image_tag pan_image.user.get_profile_image(100,100) %></p>
-  <p>ショップ名：<%= pan_image.shop_name %></p>
-  <p>説明：<%= pan_image.caption %></p>
-  <p>ユーザーネーム：<%= pan_image.user.name %></p>
-  <% if pan_image.user == current_user %>
-    <%= link_to "削除", pan_image_path(pan_image), method: :delete %>
-  <% end %>
 </div>
-<% end %>
+</div>
